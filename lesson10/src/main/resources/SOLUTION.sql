@@ -1,0 +1,2 @@
+SELECT * FROM subject WHERE (SELECT AVG(mark) FROM mark WHERE subject_id = subject.id) > (SELECT AVG(mark) FROM mark);
+SELECT * FROM student WHERE (SELECT SUM(amount) FROM payment WHERE student_id = student.id) < (SELECT AVG(total_paid) FROM (SELECT SUM(amount) as total_paid FROM payment GROUP BY student_id) as avg_payments);
